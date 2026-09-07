@@ -1,247 +1,493 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelancer Tax Pro - Smart Tax Engine & Receipt Scanner</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-slate-900 text-slate-100 font-sans antialiased">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelancer Tax Pro - Smart Tax & Expense Tracker</title>
+  <style>
+    :root {
+      --bg-main: #0B1120;
+      --card-bg: #1E293B;
+      --accent-green: #10B981;
+      --accent-green-hover: #059669;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-color: #334155;
+    }
 
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-emerald-500 text-slate-950 p-2.5 rounded-xl font-bold text-xl shadow-lg shadow-emerald-500/20">
-                    <i class="fa-solid fa-calculator"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-white">Freelancer Tax Pro</span>
-            </div>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-emerald-400 transition">Features</a>
-                <a href="#pricing" class="hover:text-emerald-400 transition">Pricing</a>
-                <a href="#privacy" class="hover:text-emerald-400 transition">Privacy Policy</a>
-                <a href="#terms" class="hover:text-emerald-400 transition">Terms of Service</a>
-            </nav>
-            <a href="#pricing" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-bold px-5 py-2.5 rounded-xl shadow-md transition">Get Pro</a>
-        </div>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-white);
+      line-height: 1.6;
+      padding: 20px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+    }
+
+    /* Header Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 32px;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #10B981, #059669);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .btn-badge {
+      background-color: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      background-color: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--accent-green);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      background-color: var(--accent-green);
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-green-hover);
+    }
+
+    .btn-secondary {
+      flex: 1;
+      background-color: var(--card-bg);
+      color: var(--text-white);
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* Features Section */
+    .features-title {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .features-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .feature-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--accent-green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .pricing-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .pricing-card.best-value {
+      border-color: var(--accent-green);
+    }
+
+    .badge-top {
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      background-color: var(--accent-green);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .plan-title {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .price-tag {
+      font-size: 28px;
+      font-weight: 800;
+      margin: 8px 0 2px 0;
+    }
+
+    .price-period {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .plan-notes {
+      font-size: 10px;
+      color: var(--accent-green);
+      margin-bottom: 16px;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .plan-features li {
+      font-size: 12px;
+      color: var(--text-white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .btn-subscribe {
+      display: block;
+      width: 100%;
+      background-color: var(--accent-green);
+      color: #000;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-subscribe-outline {
+      display: block;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-white);
+      border: 1px solid var(--border-color);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Footer & Legal Policies Section */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+      margin-top: 40px;
+    }
+
+    .legal-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .legal-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .legal-links a:hover {
+      color: var(--accent-green);
+    }
+
+    .policy-box {
+      background-color: rgba(30, 41, 59, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .policy-box h4 {
+      font-size: 13px;
+      color: var(--accent-green);
+      margin-bottom: 6px;
+    }
+
+    .policy-box p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header Navigation -->
+    <header>
+      <div class="logo-box">
+        <div class="logo-icon">📊</div>
+        <div class="logo-text">Freelancer Tax Pro</div>
+      </div>
+      <a href="#plans" class="btn-badge">Get Pro</a>
     </header>
 
     <!-- Hero Section -->
-    <section class="max-w-5xl mx-auto text-center px-6 pt-20 pb-16">
-        <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
-            Smart Tax Engine & Expenditure Tracking
-        </span>
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-6 leading-tight">
-            Simplify Expense Tracking & Tax Calculations
-        </h1>
-        <p class="text-slate-400 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
-            The all-in-one smart mobile utility designed for freelancers and independent contractors. Scan receipts, organize deductible expenses, and prepare audit-ready financial reports effortlessly.
-        </p>
-        <div class="mt-8 flex justify-center space-x-4">
-            <a href="#pricing" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
-                View Subscription Plans
-            </a>
-            <a href="#features" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-8 py-3.5 rounded-xl border border-slate-700 transition">
-                Explore Features
-            </a>
-        </div>
+    <section class="hero">
+      <div class="pill-tag">SMART TAX ENGINE & EXPENDITURE TRACKING</div>
+      <h1>Simplify Expense Tracking & Tax Calculations</h1>
+      <p class="subtitle">The all-in-one smart mobile utility designed for freelancers and independent contractors. Scan receipts, organize deductible expenses, and prepare audit-ready financial reports effortlessly.</p>
+      <div class="hero-buttons">
+        <a href="#plans" class="btn-primary">View Subscription Plans</a>
+        <a href="#features" class="btn-secondary">Explore Features</a>
+      </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-white">Engineered for Freelancers</h2>
-            <p class="text-slate-400 mt-2 text-sm">Everything you need to keep your business expenses organized</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/60 shadow-sm">
-                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 text-2xl mb-6">
-                    <i class="fa-solid fa-receipt"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-white mb-2">Smart OCR Scanner</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Instantly capture and scan physical receipts with intelligent text extraction to log expenses in seconds.</p>
-            </div>
-            <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/60 shadow-sm">
-                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 text-2xl mb-6">
-                    <i class="fa-solid fa-percent"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-white mb-2">Automated Tax Breakdown</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Calculate tax allowances and local deduction brackets according to regional freelancer tax guidelines.</p>
-            </div>
-            <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/60 shadow-sm">
-                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 text-2xl mb-6">
-                    <i class="fa-solid fa-file-export"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-white mb-2">PDF & CSV Exports</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Generate structured monthly and annual financial statements ready for your certified accountant.</p>
-            </div>
-        </div>
+    <section id="features">
+      <h2 class="features-title">Engineered for Freelancers</h2>
+      <p class="features-sub">Everything you need to keep your business expenses organized</p>
+
+      <div class="feature-card">
+        <div class="feature-icon">🧾</div>
+        <h3>Smart OCR Scanner</h3>
+        <p>Instantly capture and scan business receipts with intelligent text extraction to log expenses in seconds.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">%</div>
+        <h3>Automated Tax Breakdown</h3>
+        <p>Calculate tax allowances and exact deductible brackets according to regional freelance tax guidelines.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📑</div>
+        <h3>PDF & CSV Exports</h3>
+        <p>Generate structured monthly and annual financial statements ready for your certified accountant.</p>
+      </div>
     </section>
 
-    <!-- Pricing Section with Dynamic Geo & URL Detection -->
-    <section id="pricing" class="max-w-5xl mx-auto px-6 py-20 border-t border-slate-800">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-white">Simple, Transparent Pro Plans</h2>
-            <p class="text-slate-400 mt-2 text-sm">Localized pricing automatically adapted to your plan</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <!-- Monthly Plan -->
-            <div class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-lg font-semibold text-slate-300">Monthly Pro</h3>
-                    <div class="text-4xl font-extrabold text-white mt-4">
-                        <span id="price-monthly">29 MAD</span> 
-                        <span class="text-sm text-slate-400 font-normal">/ month</span>
-                    </div>
-                    <p class="text-xs text-emerald-400 mt-2 font-medium">
-                        <i class="fa-solid fa-earth-americas mr-1"></i> 
-                        <span id="tier-badge-monthly">Tier 4 Regional Pricing</span>
-                    </p>
-                    <ul class="mt-8 space-y-4 text-sm text-slate-300">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Unlimited AI Receipt Scanning</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Advanced Tax Allowance Engine</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Premium Cloud Sync & Backup</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Clean Ad-Free Experience</li>
-                    </ul>
-                </div>
-                <a href="https://freelancerpro.lemonsqueezy.com/checkout" id="btn-monthly" class="mt-8 block text-center bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition">Subscribe Monthly</a>
-            </div>
+    <!-- Pricing Section -->
+    <section id="plans" class="pricing-section">
+      <h2 class="features-title">Simple, Transparent Pro Plans</h2>
+      <p class="features-sub">Choose the plan that fits your freelance activity</p>
 
-            <!-- Annual Plan -->
-            <div class="bg-slate-800/90 p-8 rounded-3xl border-2 border-emerald-500 relative flex flex-col justify-between shadow-2xl shadow-emerald-500/10">
-                <span class="bg-emerald-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full absolute -top-3 right-6 shadow-sm">BEST VALUE</span>
-                <div>
-                    <h3 class="text-lg font-semibold text-white">Annual Pro</h3>
-                    <div class="text-4xl font-extrabold text-white mt-4">
-                        <span id="price-annual">199 MAD</span> 
-                        <span class="text-sm text-slate-400 font-normal">/ year</span>
-                    </div>
-                    <p class="text-xs text-emerald-400 mt-2 font-medium">
-                        <i class="fa-solid fa-earth-americas mr-1"></i> 
-                        <span id="tier-badge-annual">Tier 4 Regional Pricing</span>
-                    </p>
-                    <ul class="mt-8 space-y-4 text-sm text-slate-300">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> All Monthly Pro Features Included</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> CSV & Audit-Ready PDF Exports</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Priority Customer Support</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Save over 40% annually</li>
-                    </ul>
-                </div>
-                <a href="https://freelancerpro.lemonsqueezy.com/checkout" id="btn-annual" class="mt-8 block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl shadow-md transition">Subscribe Annual</a>
-            </div>
-        </div>
+      <!-- Monthly Plan -->
+      <div class="pricing-card">
+        <div class="plan-title">Monthly Pro</div>
+        <div class="price-tag" id="monthly-price">$2.99 <span class="price-period">/ month</span></div>
+        <div class="plan-notes" id="monthly-note">Localized Tier Adjustment</div>
+        <ul class="plan-features">
+          <li>Unlimited AI Receipt Scanning</li>
+          <li>Advanced Tax Allowance Engine</li>
+          <li>Premium Cloud Sync & Backup</li>
+          <li>Clean Ad-Free Experience</li>
+        </ul>
+        <a href="#" class="btn-subscribe-outline" id="btn-monthly">Subscribe Monthly</a>
+      </div>
+
+      <!-- Annual Plan -->
+      <div class="pricing-card best-value">
+        <div class="badge-top">BEST VALUE</div>
+        <div class="plan-title">Annual Pro</div>
+        <div class="price-tag" id="annual-price">$19.99 <span class="price-period">/ year</span></div>
+        <div class="plan-notes" id="annual-note">Save over 40% annually</div>
+        <ul class="plan-features">
+          <li>All Monthly Pro Features Included</li>
+          <li>CSV & Audit-Ready PDF Exports</li>
+          <li>Priority Customer Support</li>
+          <li>Save over 40% annually</li>
+        </ul>
+        <a href="#" class="btn-subscribe" id="btn-annual">Subscribe Annual</a>
+      </div>
     </section>
 
-    <!-- Legal Section (Privacy, Terms, Refunds) -->
-    <section class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800 space-y-12">
-        <!-- Privacy Policy -->
-        <div id="privacy" class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800">
-            <h3 class="text-2xl font-bold text-white mb-4">Privacy Policy</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-3">
-                At Freelancer Tax Pro, we respect your data privacy. We collect minimal personal details (such as account login email) necessary to provide our expense tracking and subscription services.
-            </p>
-            <p class="text-slate-400 text-sm leading-relaxed">
-                Receipt images and logged financial records are stored securely and encrypted. We do not sell, trade, or share your personal financial information with third-party advertising entities.
-            </p>
-        </div>
+    <!-- Footer & Legal Policies -->
+    <footer>
+      <div class="legal-links">
+        <a href="#privacy">Privacy Policy</a> •
+        <a href="#terms">Terms of Service</a> •
+        <a href="#refund">Refund Policy</a>
+      </div>
 
-        <!-- Terms of Service -->
-        <div id="terms" class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800">
-            <h3 class="text-2xl font-bold text-white mb-4">Terms of Service</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-3">
-                By using Freelancer Tax Pro, you agree that the app serves as an organizational utility for tracking expenses and calculating estimated tax deductions.
-            </p>
-            <p class="text-slate-400 text-sm leading-relaxed">
-                The application provides estimates and automated data organization; it does not replace official advice from a certified public accountant or licensed tax attorney. Users are responsible for verifying their tax filings with local tax authorities.
-            </p>
-        </div>
+      <!-- Privacy Policy Section -->
+      <div id="privacy" class="policy-box">
+        <h4>Privacy Policy</h4>
+        <p>At Freelancer Tax Pro, we respect your data privacy. We collect minimal personal data such as account login details necessary to provide our tax and expense calculation services. Your financial receipts and ledger data are encrypted using industry-standard SSL protocols.</p>
+      </div>
 
-        <!-- Refund Policy -->
-        <div id="refund" class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800">
-            <h3 class="text-2xl font-bold text-white mb-4">Refund & Cancellation Policy</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-3">
-                You can cancel your subscription at any time directly through your account settings or merchant dashboard. Upon cancellation, your Pro features will remain active until the end of your current billing period.
-            </p>
-            <p class="text-slate-400 text-sm leading-relaxed">
-                If you encounter technical issues or were charged accidentally, please contact support within 14 days of purchase for a full refund review.
-            </p>
-        </div>
-    </section>
+      <!-- Terms of Service Section -->
+      <div id="terms" class="policy-box">
+        <h4>Terms of Service</h4>
+        <p>By using Freelancer Tax Pro, you agree to supply accurate income and expense information. Our application provides tax allowance estimations based on localized rules, but does not replace professional legal advice or certified accountancy services.</p>
+      </div>
 
-    <!-- Footer -->
-    <footer class="max-w-7xl mx-auto px-6 py-10 border-t border-slate-800 text-xs text-slate-500">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-                <p class="font-bold text-slate-300 text-sm">Freelancer Tax Pro</p>
-                <p class="mt-1">Support Contact: <a href="mailto:support@freelancertax.app" class="text-emerald-400 hover:underline">support@freelancertax.app</a></p>
-            </div>
-            <div class="flex space-x-6 text-slate-400">
-                <a href="#privacy" class="hover:text-emerald-400">Privacy Policy</a>
-                <a href="#terms" class="hover:text-emerald-400">Terms of Service</a>
-                <a href="#refund" class="hover:text-emerald-400">Refund Policy</a>
-            </div>
-        </div>
-        <div class="mt-8 text-center text-slate-600">
-            &copy; 2026 Freelancer Tax Pro. All rights reserved.
-        </div>
+      <!-- Refund Policy Section -->
+      <div id="refund" class="policy-box">
+        <h4>Refund Policy</h4>
+        <p>We offer a 14-day full money-back guarantee for all subscription purchases. If you are not completely satisfied with our Pro services, contact our support team within 14 days of purchase for an immediate full refund.</p>
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Freelancer Tax Pro. All rights reserved.
+      </div>
     </footer>
 
-    <!-- Smart URL & Geo Pricing Logic -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlTier = urlParams.get('tier');
-            const urlCountry = urlParams.get('country');
+  </div>
 
-            const pricing = {
-                tier1: { monthly: '$7.99', annual: '$59.99', badge: 'Tier 1 Standard Pricing' },
-                tier2: { monthly: '€6.99', annual: '€49.99', badge: 'Tier 2 Premium Pricing' },
-                tier3: { monthly: '€4.99', annual: '€39.99', badge: 'Tier 3 Dynamic Pricing' },
-                tier4_ma: { monthly: '29 MAD', annual: '199 MAD', badge: 'Tier 4 Regional Pricing' },
-                tier4_global: { monthly: '$2.99', annual: '$19.99', badge: 'Tier 4 Global Regional Pricing' }
-            };
+  <!-- Tier Logic Script -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const tier = urlParams.get('tier') || 'tier1';
 
-            function applyPricing(plan) {
-                document.getElementById('price-monthly').innerText = plan.monthly;
-                document.getElementById('price-annual').innerText = plan.annual;
-                document.getElementById('tier-badge-monthly').innerText = plan.badge;
-                document.getElementById('tier-badge-annual').innerText = plan.badge;
-            }
+    const pricing = {
+      'tier1': { monthly: '$4.99', annual: '$39.99', noteM: 'Standard Global Tier', noteA: 'Save over 30%' },
+      'tier2': { monthly: '$3.99', annual: '$29.99', noteM: 'Regional Tier 2', noteA: 'Save over 35%' },
+      'tier3': { monthly: '$2.99', annual: '$19.99', noteM: 'Regional Tier 3', noteA: 'Save over 40%' },
+      'tier4_ma': { monthly: '29.00 MAD', annual: '199.00 MAD', noteM: 'Morocco Regional Pricing', noteA: 'Save over 40% annually' },
+      'tier4_global': { monthly: '$1.99', annual: '$14.99', noteM: 'Emerging Markets Tier', noteA: 'Best Local Value' }
+    };
 
-            // Priority 1: Check URL ?tier= parameter
-            if (urlTier && pricing[urlTier]) {
-                applyPricing(pricing[urlTier]);
-                return;
-            }
+    const currentPricing = pricing[tier] || pricing['tier3'];
 
-            // Priority 2: Check URL ?country= parameter
-            if (urlCountry) {
-                const country = urlCountry.toUpperCase();
-                if (['US', 'CA', 'CH', 'SG'].includes(country)) applyPricing(pricing.tier1);
-                else if (['DE', 'NL', 'BE', 'GB', 'AU'].includes(country)) applyPricing(pricing.tier2);
-                else if (['FR', 'ES', 'IT', 'IE', 'NZ'].includes(country)) applyPricing(pricing.tier3);
-                else if (country === 'MA') applyPricing(pricing.tier4_ma);
-                else applyPricing(pricing.tier4_global);
-                return;
-            }
-
-            // Priority 3: Fallback Auto IP Detection
-            fetch('https://ipapi.co/json/')
-                .then(res => res.json())
-                .then(data => {
-                    const c = data.country_code;
-                    if (['US', 'CA', 'CH', 'SG'].includes(c)) applyPricing(pricing.tier1);
-                    else if (['DE', 'NL', 'BE', 'GB', 'AU'].includes(c)) applyPricing(pricing.tier2);
-                    else if (['FR', 'ES', 'IT', 'IE', 'NZ'].includes(c)) applyPricing(pricing.tier3);
-                    else if (c === 'MA') applyPricing(pricing.tier4_ma);
-                    else applyPricing(pricing.tier4_global);
-                })
-                .catch(() => applyPricing(pricing.tier4_ma));
-        });
-    </script>
+    document.getElementById('monthly-price').innerHTML = `${currentPricing.monthly} <span class="price-period">/ month</span>`;
+    document.getElementById('annual-price').innerHTML = `${currentPricing.annual} <span class="price-period">/ year</span>`;
+    document.getElementById('monthly-note').innerText = currentPricing.noteM;
+    document.getElementById('annual-note').innerText = currentPricing.noteA;
+  </script>
 
 </body>
 </html>

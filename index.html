@@ -26,13 +26,13 @@
       background-color: var(--bg-main);
       color: var(--text-white);
       line-height: 1.6;
-      padding: 20px 16px;
+      padding: 24px 16px;
       display: flex;
       justify-content: center;
     }
 
     .container {
-      max-width: 480px;
+      max-width: 1000px;
       width: 100%;
     }
 
@@ -42,7 +42,7 @@
       align-items: center;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--border-color);
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .logo-box {
@@ -52,19 +52,19 @@
     }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       background: linear-gradient(135deg, #10B981, #059669);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .logo-text {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       letter-spacing: -0.5px;
     }
@@ -72,9 +72,9 @@
     .btn-badge {
       background-color: rgba(16, 185, 129, 0.15);
       color: var(--accent-green);
-      padding: 6px 14px;
+      padding: 8px 18px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       border: 1px solid rgba(16, 185, 129, 0.3);
       text-decoration: none;
@@ -82,7 +82,8 @@
 
     .hero {
       text-align: center;
-      margin-bottom: 40px;
+      max-width: 680px;
+      margin: 0 auto 50px auto;
     }
 
     .pill-tag {
@@ -94,28 +95,31 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 30px;
       margin-bottom: 16px;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 36px;
       font-weight: 800;
       line-height: 1.25;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       letter-spacing: -0.5px;
     }
 
     .subtitle {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 12px;
+      justify-content: center;
+      gap: 14px;
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     .btn-primary {
@@ -143,63 +147,78 @@
       text-align: center;
     }
 
+    .features-section, .pricing-section {
+      margin-bottom: 50px;
+    }
+
     .features-title {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 700;
       text-align: center;
       margin-bottom: 6px;
     }
 
     .features-sub {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    /* Grid for Desktop / Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 780px;
+      margin: 0 auto;
     }
 
     .feature-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 14px;
+      padding: 20px;
     }
 
     .feature-icon {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background-color: rgba(16, 185, 129, 0.1);
       color: var(--accent-green);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-weight: bold;
     }
 
     .feature-card h3 {
-      font-size: 15px;
-      margin-bottom: 6px;
+      font-size: 16px;
+      margin-bottom: 8px;
     }
 
     .feature-card p {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
-    }
-
-    .pricing-section {
-      margin-top: 40px;
-      margin-bottom: 40px;
     }
 
     .pricing-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 24px;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .pricing-card.best-value {
@@ -208,49 +227,49 @@
 
     .badge-top {
       position: absolute;
-      top: -10px;
-      right: 16px;
+      top: -12px;
+      right: 20px;
       background-color: var(--accent-green);
       color: #000;
       font-size: 10px;
       font-weight: 800;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 12px;
       text-transform: uppercase;
     }
 
     .plan-title {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
       font-weight: 600;
     }
 
     .price-tag {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 800;
-      margin: 8px 0 2px 0;
+      margin: 10px 0 2px 0;
     }
 
     .price-period {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
     }
 
     .plan-notes {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--accent-green);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .plan-features {
       list-style: none;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .plan-features li {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-white);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -268,7 +287,7 @@
       background-color: var(--accent-green);
       color: #000;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 14px;
       padding: 12px;
       border-radius: 8px;
       text-align: center;
@@ -282,7 +301,7 @@
       color: var(--text-white);
       border: 1px solid var(--border-color);
       font-weight: 700;
-      font-size: 13px;
+      font-size: 14px;
       padding: 12px;
       border-radius: 8px;
       text-align: center;
@@ -291,16 +310,16 @@
 
     footer {
       border-top: 1px solid var(--border-color);
-      padding-top: 24px;
-      margin-top: 40px;
+      padding-top: 30px;
+      margin-top: 50px;
     }
 
     .legal-links {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      font-size: 12px;
-      margin-bottom: 20px;
+      gap: 16px;
+      font-size: 13px;
+      margin-bottom: 24px;
     }
 
     .legal-links a {
@@ -312,27 +331,34 @@
       background-color: rgba(30, 41, 59, 0.5);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
     }
 
     .policy-box h4 {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--accent-green);
       margin-bottom: 6px;
     }
 
     .policy-box p {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .copyright {
       text-align: center;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-muted);
-      margin-top: 16px;
+      margin-top: 20px;
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 768px) {
+      h1 { font-size: 26px; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
     }
   </style>
 </head>
@@ -357,26 +383,28 @@
       </div>
     </section>
 
-    <section id="features">
+    <section id="features" class="features-section">
       <h2 class="features-title">Engineered for Freelancers</h2>
       <p class="features-sub">Everything you need to keep your business expenses organized</p>
 
-      <div class="feature-card">
-        <div class="feature-icon">🧾</div>
-        <h3>Smart OCR Scanner</h3>
-        <p>Instantly capture and scan business receipts with intelligent text extraction to log expenses in seconds.</p>
-      </div>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">🧾</div>
+          <h3>Smart OCR Scanner</h3>
+          <p>Instantly capture and scan business receipts with intelligent text extraction to log expenses in seconds.</p>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">%</div>
-        <h3>Automated Tax Breakdown</h3>
-        <p>Calculate tax allowances and exact deductible brackets according to regional freelance tax guidelines.</p>
-      </div>
+        <div class="feature-card">
+          <div class="feature-icon">%</div>
+          <h3>Automated Tax Breakdown</h3>
+          <p>Calculate tax allowances and exact deductible brackets according to regional freelance tax guidelines.</p>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">📑</div>
-        <h3>PDF & CSV Exports</h3>
-        <p>Generate structured monthly and annual financial statements ready for your certified accountant.</p>
+        <div class="feature-card">
+          <div class="feature-icon">📑</div>
+          <h3>PDF & CSV Exports</h3>
+          <p>Generate structured monthly and annual financial statements ready for your certified accountant.</p>
+        </div>
       </div>
     </section>
 
@@ -384,31 +412,37 @@
       <h2 class="features-title">Simple, Transparent Pro Plans</h2>
       <p class="features-sub">Choose the plan that fits your freelance activity</p>
 
-      <div class="pricing-card">
-        <div class="plan-title">Monthly Pro</div>
-        <div class="price-tag" id="monthly-price">$2.99 <span class="price-period">/ month</span></div>
-        <div class="plan-notes" id="monthly-note">Localized Tier Adjustment</div>
-        <ul class="plan-features">
-          <li>Unlimited AI Receipt Scanning</li>
-          <li>Advanced Tax Allowance Engine</li>
-          <li>Premium Cloud Sync & Backup</li>
-          <li>Clean Ad-Free Experience</li>
-        </ul>
-        <a href="#" class="btn-subscribe-outline" id="btn-monthly">Subscribe Monthly</a>
-      </div>
+      <div class="grid-2">
+        <div class="pricing-card">
+          <div>
+            <div class="plan-title">Monthly Pro</div>
+            <div class="price-tag" id="monthly-price">$2.99 <span class="price-period">/ month</span></div>
+            <div class="plan-notes" id="monthly-note">Localized Tier Adjustment</div>
+            <ul class="plan-features">
+              <li>Unlimited AI Receipt Scanning</li>
+              <li>Advanced Tax Allowance Engine</li>
+              <li>Premium Cloud Sync & Backup</li>
+              <li>Clean Ad-Free Experience</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-subscribe-outline" id="btn-monthly">Subscribe Monthly</a>
+        </div>
 
-      <div class="pricing-card best-value">
-        <div class="badge-top">BEST VALUE</div>
-        <div class="plan-title">Annual Pro</div>
-        <div class="price-tag" id="annual-price">$19.99 <span class="price-period">/ year</span></div>
-        <div class="plan-notes" id="annual-note">Save over 40% annually</div>
-        <ul class="plan-features">
-          <li>All Monthly Pro Features Included</li>
-          <li>CSV & Audit-Ready PDF Exports</li>
-          <li>Priority Customer Support</li>
-          <li>Save over 40% annually</li>
-        </ul>
-        <a href="#" class="btn-subscribe" id="btn-annual">Subscribe Annual</a>
+        <div class="pricing-card best-value">
+          <div class="badge-top">BEST VALUE</div>
+          <div>
+            <div class="plan-title">Annual Pro</div>
+            <div class="price-tag" id="annual-price">$19.99 <span class="price-period">/ year</span></div>
+            <div class="plan-notes" id="annual-note">Save over 40% annually</div>
+            <ul class="plan-features">
+              <li>All Monthly Pro Features Included</li>
+              <li>CSV & Audit-Ready PDF Exports</li>
+              <li>Priority Customer Support</li>
+              <li>Save over 40% annually</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-subscribe" id="btn-annual">Subscribe Annual</a>
+        </div>
       </div>
     </section>
 

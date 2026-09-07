@@ -80,11 +80,11 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section with Dynamic Geo & URL Detection -->
     <section id="pricing" class="max-w-5xl mx-auto px-6 py-20 border-t border-slate-800">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-white">Simple, Transparent Pro Plans</h2>
-            <p class="text-slate-400 mt-2 text-sm">Automatic regional purchasing power adjustments applied at checkout</p>
+            <p class="text-slate-400 mt-2 text-sm">Localized pricing automatically adapted to your plan</p>
         </div>
         
         <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -92,8 +92,14 @@
             <div class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700 flex flex-col justify-between">
                 <div>
                     <h3 class="text-lg font-semibold text-slate-300">Monthly Pro</h3>
-                    <div class="text-4xl font-extrabold text-white mt-4">$2.99 <span class="text-sm text-slate-400 font-normal">/ month</span></div>
-                    <p class="text-xs text-emerald-400 mt-2 font-medium"><i class="fa-solid fa-globe mr-1"></i> Regional pricing automatically calculated at checkout</p>
+                    <div class="text-4xl font-extrabold text-white mt-4">
+                        <span id="price-monthly">29 MAD</span> 
+                        <span class="text-sm text-slate-400 font-normal">/ month</span>
+                    </div>
+                    <p class="text-xs text-emerald-400 mt-2 font-medium">
+                        <i class="fa-solid fa-earth-americas mr-1"></i> 
+                        <span id="tier-badge-monthly">Tier 4 Regional Pricing</span>
+                    </p>
                     <ul class="mt-8 space-y-4 text-sm text-slate-300">
                         <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Unlimited AI Receipt Scanning</li>
                         <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Advanced Tax Allowance Engine</li>
@@ -101,7 +107,7 @@
                         <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Clean Ad-Free Experience</li>
                     </ul>
                 </div>
-                <a href="#" class="mt-8 block text-center bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition">Subscribe Monthly</a>
+                <a href="https://freelancerpro.lemonsqueezy.com/checkout" id="btn-monthly" class="mt-8 block text-center bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition">Subscribe Monthly</a>
             </div>
 
             <!-- Annual Plan -->
@@ -109,8 +115,14 @@
                 <span class="bg-emerald-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full absolute -top-3 right-6 shadow-sm">BEST VALUE</span>
                 <div>
                     <h3 class="text-lg font-semibold text-white">Annual Pro</h3>
-                    <div class="text-4xl font-extrabold text-white mt-4">$19.99 <span class="text-sm text-slate-400 font-normal">/ year</span></div>
-                    <p class="text-xs text-emerald-400 mt-2 font-medium"><i class="fa-solid fa-globe mr-1"></i> Regional pricing automatically calculated at checkout</p>
+                    <div class="text-4xl font-extrabold text-white mt-4">
+                        <span id="price-annual">199 MAD</span> 
+                        <span class="text-sm text-slate-400 font-normal">/ year</span>
+                    </div>
+                    <p class="text-xs text-emerald-400 mt-2 font-medium">
+                        <i class="fa-solid fa-earth-americas mr-1"></i> 
+                        <span id="tier-badge-annual">Tier 4 Regional Pricing</span>
+                    </p>
                     <ul class="mt-8 space-y-4 text-sm text-slate-300">
                         <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> All Monthly Pro Features Included</li>
                         <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> CSV & Audit-Ready PDF Exports</li>
@@ -118,7 +130,7 @@
                         <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Save over 40% annually</li>
                     </ul>
                 </div>
-                <a href="#" class="mt-8 block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl shadow-md transition">Subscribe Annual</a>
+                <a href="https://freelancerpro.lemonsqueezy.com/checkout" id="btn-annual" class="mt-8 block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl shadow-md transition">Subscribe Annual</a>
             </div>
         </div>
     </section>
@@ -176,6 +188,60 @@
             &copy; 2026 Freelancer Tax Pro. All rights reserved.
         </div>
     </footer>
+
+    <!-- Smart URL & Geo Pricing Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlTier = urlParams.get('tier');
+            const urlCountry = urlParams.get('country');
+
+            const pricing = {
+                tier1: { monthly: '$7.99', annual: '$59.99', badge: 'Tier 1 Standard Pricing' },
+                tier2: { monthly: '€6.99', annual: '€49.99', badge: 'Tier 2 Premium Pricing' },
+                tier3: { monthly: '€4.99', annual: '€39.99', badge: 'Tier 3 Dynamic Pricing' },
+                tier4_ma: { monthly: '29 MAD', annual: '199 MAD', badge: 'Tier 4 Regional Pricing' },
+                tier4_global: { monthly: '$2.99', annual: '$19.99', badge: 'Tier 4 Global Regional Pricing' }
+            };
+
+            function applyPricing(plan) {
+                document.getElementById('price-monthly').innerText = plan.monthly;
+                document.getElementById('price-annual').innerText = plan.annual;
+                document.getElementById('tier-badge-monthly').innerText = plan.badge;
+                document.getElementById('tier-badge-annual').innerText = plan.badge;
+            }
+
+            // Priority 1: Check URL ?tier= parameter
+            if (urlTier && pricing[urlTier]) {
+                applyPricing(pricing[urlTier]);
+                return;
+            }
+
+            // Priority 2: Check URL ?country= parameter
+            if (urlCountry) {
+                const country = urlCountry.toUpperCase();
+                if (['US', 'CA', 'CH', 'SG'].includes(country)) applyPricing(pricing.tier1);
+                else if (['DE', 'NL', 'BE', 'GB', 'AU'].includes(country)) applyPricing(pricing.tier2);
+                else if (['FR', 'ES', 'IT', 'IE', 'NZ'].includes(country)) applyPricing(pricing.tier3);
+                else if (country === 'MA') applyPricing(pricing.tier4_ma);
+                else applyPricing(pricing.tier4_global);
+                return;
+            }
+
+            // Priority 3: Fallback Auto IP Detection
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    const c = data.country_code;
+                    if (['US', 'CA', 'CH', 'SG'].includes(c)) applyPricing(pricing.tier1);
+                    else if (['DE', 'NL', 'BE', 'GB', 'AU'].includes(c)) applyPricing(pricing.tier2);
+                    else if (['FR', 'ES', 'IT', 'IE', 'NZ'].includes(c)) applyPricing(pricing.tier3);
+                    else if (c === 'MA') applyPricing(pricing.tier4_ma);
+                    else applyPricing(pricing.tier4_global);
+                })
+                .catch(() => applyPricing(pricing.tier4_ma));
+        });
+    </script>
 
 </body>
 </html>

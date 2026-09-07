@@ -36,7 +36,6 @@
       width: 100%;
     }
 
-    /* Header Navigation */
     header {
       display: flex;
       justify-content: space-between;
@@ -78,9 +77,9 @@
       font-size: 12px;
       font-weight: 600;
       border: 1px solid rgba(16, 185, 129, 0.3);
+      text-decoration: none;
     }
 
-    /* Hero Section */
     .hero {
       text-align: center;
       margin-bottom: 40px;
@@ -129,11 +128,6 @@
       border-radius: 10px;
       text-decoration: none;
       text-align: center;
-      transition: background-color 0.2s;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-green-hover);
     }
 
     .btn-secondary {
@@ -149,7 +143,6 @@
       text-align: center;
     }
 
-    /* Features Section */
     .features-title {
       font-size: 20px;
       font-weight: 700;
@@ -195,7 +188,6 @@
       color: var(--text-muted);
     }
 
-    /* Pricing Section */
     .pricing-section {
       margin-top: 40px;
       margin-bottom: 40px;
@@ -281,8 +273,6 @@
       border-radius: 8px;
       text-align: center;
       text-decoration: none;
-      border: none;
-      cursor: pointer;
     }
 
     .btn-subscribe-outline {
@@ -297,10 +287,8 @@
       border-radius: 8px;
       text-align: center;
       text-decoration: none;
-      cursor: pointer;
     }
 
-    /* Footer & Legal Policies Section */
     footer {
       border-top: 1px solid var(--border-color);
       padding-top: 24px;
@@ -318,10 +306,6 @@
     .legal-links a {
       color: var(--text-muted);
       text-decoration: none;
-    }
-
-    .legal-links a:hover {
-      color: var(--accent-green);
     }
 
     .policy-box {
@@ -355,8 +339,6 @@
 <body>
 
   <div class="container">
-    
-    <!-- Header Navigation -->
     <header>
       <div class="logo-box">
         <div class="logo-icon">📊</div>
@@ -365,7 +347,6 @@
       <a href="#plans" class="btn-badge">Get Pro</a>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="pill-tag">SMART TAX ENGINE & EXPENDITURE TRACKING</div>
       <h1>Simplify Expense Tracking & Tax Calculations</h1>
@@ -376,7 +357,6 @@
       </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features">
       <h2 class="features-title">Engineered for Freelancers</h2>
       <p class="features-sub">Everything you need to keep your business expenses organized</p>
@@ -400,12 +380,10 @@
       </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="plans" class="pricing-section">
       <h2 class="features-title">Simple, Transparent Pro Plans</h2>
       <p class="features-sub">Choose the plan that fits your freelance activity</p>
 
-      <!-- Monthly Plan -->
       <div class="pricing-card">
         <div class="plan-title">Monthly Pro</div>
         <div class="price-tag" id="monthly-price">$2.99 <span class="price-period">/ month</span></div>
@@ -419,7 +397,6 @@
         <a href="#" class="btn-subscribe-outline" id="btn-monthly">Subscribe Monthly</a>
       </div>
 
-      <!-- Annual Plan -->
       <div class="pricing-card best-value">
         <div class="badge-top">BEST VALUE</div>
         <div class="plan-title">Annual Pro</div>
@@ -435,7 +412,6 @@
       </div>
     </section>
 
-    <!-- Footer & Legal Policies -->
     <footer>
       <div class="legal-links">
         <a href="#privacy">Privacy Policy</a> •
@@ -443,19 +419,16 @@
         <a href="#refund">Refund Policy</a>
       </div>
 
-      <!-- Privacy Policy Section -->
       <div id="privacy" class="policy-box">
         <h4>Privacy Policy</h4>
         <p>At Freelancer Tax Pro, we respect your data privacy. We collect minimal personal data such as account login details necessary to provide our tax and expense calculation services. Your financial receipts and ledger data are encrypted using industry-standard SSL protocols.</p>
       </div>
 
-      <!-- Terms of Service Section -->
       <div id="terms" class="policy-box">
         <h4>Terms of Service</h4>
         <p>By using Freelancer Tax Pro, you agree to supply accurate income and expense information. Our application provides tax allowance estimations based on localized rules, but does not replace professional legal advice or certified accountancy services.</p>
       </div>
 
-      <!-- Refund Policy Section -->
       <div id="refund" class="policy-box">
         <h4>Refund Policy</h4>
         <p>We offer a 14-day full money-back guarantee for all subscription purchases. If you are not completely satisfied with our Pro services, contact our support team within 14 days of purchase for an immediate full refund.</p>
@@ -465,10 +438,8 @@
         &copy; 2026 Freelancer Tax Pro. All rights reserved.
       </div>
     </footer>
-
   </div>
 
-  <!-- Tier Logic Script -->
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const tier = urlParams.get('tier') || 'tier1';
